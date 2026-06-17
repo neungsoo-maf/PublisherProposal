@@ -1,0 +1,1341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAF × [파트너사] 도입 제안서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --maf-navy: #0D1B3E;
+    --maf-blue: #2563EB;
+    --maf-purple: #7C3AED;
+    --maf-grad-start: #5B21E8;
+    --maf-grad-end: #2563EB;
+    --maf-light: #F0F4FF;
+    --maf-bg: #F7F8FC;
+    --white: #FFFFFF;
+    --gray-100: #F1F3F9;
+    --gray-200: #E2E6F0;
+    --gray-500: #8892A4;
+    --gray-700: #3D4A5C;
+    --text: #1A2133;
+
+    --page-w: 277mm; /* A4 landscape inner width */
+    --page-h: 190mm;
+    --gutter: 14mm;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Noto Sans KR', 'Inter', sans-serif;
+    background: #D0D5E0;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+    font-size: 13px;
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    width: 297mm;
+    min-height: 210mm;
+    background: var(--white);
+    margin: 12mm auto;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── COVER ── */
+  .cover {
+    background: linear-gradient(135deg, #0D1535 0%, #1a2d6e 50%, #2451a3 100%);
+    min-height: 210mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--gutter);
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.35) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -40px; left: 30%;
+    width: 240px; height: 240px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(37,99,235,0.25) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .cover-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .maf-logo-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .maf-logo-img {
+    height: 24px;
+    width: auto;
+    display: block;
+    background: #ffffff;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+  .cover .maf-logo-img {
+    height: 26px;
+    padding: 5px 10px;
+    border-radius: 6px;
+  }
+  .section-logo-img {
+    height: 18px;
+    width: auto;
+    display: block;
+    background: #ffffff;
+    padding: 3px 7px;
+    border-radius: 4px;
+    opacity: 0.9;
+  }
+  .cta-logo-img {
+    height: 22px;
+    width: auto;
+    display: block;
+    background: #ffffff;
+    padding: 4px 8px;
+    border-radius: 5px;
+    opacity: 0.85;
+  }
+  .cover-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    margin: 0 4px;
+  }
+  .cover-tag {
+    font-size: 11px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+  .cover-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20mm 0 10mm;
+  }
+  .cover-eyebrow {
+    font-size: 10px;
+    font-weight: 500;
+    color: #93B4FF;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .cover-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: #93B4FF;
+  }
+  .cover-title {
+    font-size: 36px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+  .cover-title .accent {
+    background: linear-gradient(90deg, #93B4FF, #C4AAFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover-subtitle {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 40px;
+    letter-spacing: -0.01em;
+  }
+  .cover-kpis {
+    display: flex;
+    gap: 0;
+  }
+  .cover-kpi {
+    padding: 0 28px 0 0;
+    margin-right: 28px;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .cover-kpi:last-child { border-right: none; }
+  .cover-kpi-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .cover-kpi-num .unit {
+    font-size: 16px;
+    color: #93B4FF;
+  }
+  .cover-kpi-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 5px;
+    letter-spacing: 0.04em;
+    line-height: 1.5;
+  }
+  .cover-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .cover-toc {
+    display: flex;
+    gap: 6px;
+  }
+  .cover-toc-item {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    padding: 5px 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 20px;
+    letter-spacing: 0.04em;
+  }
+  .cover-date {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── SECTION HEADER BAR ── */
+  .section-page {
+    min-height: 210mm;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+  .section-header {
+    background: linear-gradient(135deg, var(--maf-navy) 0%, #1e3a8a 100%);
+    padding: 18px var(--gutter);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .section-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.12em;
+    min-width: 28px;
+  }
+  .section-divider {
+    width: 1px; height: 16px;
+    background: rgba(255,255,255,0.2);
+  }
+  .section-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+  .section-desc {
+    margin-left: auto;
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    font-weight: 300;
+    letter-spacing: 0.02em;
+  }
+  .section-body {
+    flex: 1;
+    padding: 16px var(--gutter) var(--gutter);
+    background: var(--maf-bg);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 16px 20px;
+    border: 1px solid var(--gray-200);
+  }
+  .card-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--maf-blue);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .card-body {
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.7;
+  }
+
+  /* ── CASE STUDY (Section 1) ── */
+  .case-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 14px;
+    flex: 1;
+  }
+  .case-left { display: flex; flex-direction: column; gap: 12px; }
+  .case-right { display: flex; flex-direction: column; gap: 12px; }
+
+  .partner-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #FEF3C7;
+    border: 1px solid #FDE68A;
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 10px;
+    font-weight: 500;
+    color: #92400E;
+    letter-spacing: 0.04em;
+  }
+  .partner-badge .dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    background: #D97706;
+  }
+
+  .kpi-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  .kpi-box {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 12px 10px;
+    text-align: center;
+    border: 1px solid var(--gray-200);
+  }
+  .kpi-box.dark {
+    background: var(--maf-navy);
+    border-color: var(--maf-navy);
+  }
+  .kpi-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--maf-blue);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .kpi-box.dark .kpi-num { color: #93B4FF; }
+  .kpi-unit { font-size: 13px; }
+  .kpi-lbl {
+    font-size: 9px;
+    color: var(--gray-500);
+    margin-top: 4px;
+    line-height: 1.5;
+    letter-spacing: 0.03em;
+  }
+  .kpi-box.dark .kpi-lbl { color: rgba(255,255,255,0.4); }
+
+  .timeline-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1px solid var(--gray-200);
+    flex: 1;
+  }
+  .timeline-label {
+    font-size: 9px;
+    font-weight: 500;
+    color: var(--maf-purple);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .timeline-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 11.5px;
+  }
+  .timeline-phase {
+    font-family: 'Inter', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    color: var(--white);
+    background: linear-gradient(90deg, var(--maf-grad-start), var(--maf-grad-end));
+    border-radius: 4px;
+    padding: 2px 7px;
+    white-space: nowrap;
+    margin-top: 1px;
+  }
+  .timeline-text { color: var(--gray-700); line-height: 1.5; }
+  .timeline-text strong { color: var(--text); font-weight: 500; }
+
+  .quote-card {
+    background: linear-gradient(135deg, #EEF2FF, #F5F3FF);
+    border-radius: 10px;
+    padding: 14px 18px;
+    border: 1px solid #DDD6FE;
+    position: relative;
+  }
+  .quote-mark {
+    font-size: 36px;
+    color: #C4B5FD;
+    line-height: 0.8;
+    position: absolute;
+    top: 12px; left: 14px;
+    font-family: Georgia, serif;
+  }
+  .quote-text {
+    font-size: 12px;
+    color: var(--gray-700);
+    line-height: 1.7;
+    padding-left: 22px;
+    font-style: italic;
+  }
+
+  /* image placeholder */
+  .img-placeholder {
+    border-radius: 8px;
+    border: 2px dashed #CBD5E1;
+    background: #F8FAFC;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: #94A3B8;
+    font-size: 11px;
+    letter-spacing: 0.04em;
+    text-align: center;
+  }
+  .img-placeholder .icon {
+    font-size: 22px;
+    opacity: 0.5;
+  }
+
+  .before-after {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    flex: 1;
+  }
+  .ba-item {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .ba-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+  }
+  .ba-tag.before {
+    background: #FEE2E2;
+    color: #991B1B;
+  }
+  .ba-tag.after {
+    background: #D1FAE5;
+    color: #065F46;
+  }
+  .ba-img {
+    flex: 1;
+    min-height: 80px;
+  }
+
+  /* ── SDK SECTION ── */
+  .sdk-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    flex: 1;
+  }
+  .sdk-col { display: flex; flex-direction: column; gap: 10px; }
+
+  .step-card {
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid var(--gray-200);
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--maf-grad-start), var(--maf-grad-end));
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    letter-spacing: 0;
+  }
+  .step-content { flex: 1; }
+  .step-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+  .step-desc {
+    font-size: 11px;
+    color: var(--gray-700);
+    line-height: 1.65;
+  }
+
+  .code-snippet {
+    background: #0F1629;
+    border-radius: 7px;
+    padding: 12px 14px;
+    font-family: 'Courier New', monospace;
+    font-size: 10.5px;
+    color: #A5B4FC;
+    line-height: 1.7;
+    overflow: hidden;
+  }
+  .code-snippet .kw { color: #7DD3FC; }
+  .code-snippet .fn { color: #C4B5FD; }
+  .code-snippet .str { color: #86EFAC; }
+  .code-snippet .comment { color: rgba(255,255,255,0.3); }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .feature-item {
+    background: var(--maf-light);
+    border-radius: 8px;
+    padding: 16px 18px;
+    border: 1px solid #C7D7FD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .feature-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--maf-blue);
+    margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .feature-item-title .fi-icon { font-size: 17px; }
+  .feature-item-desc {
+    font-size: 12.5px;
+    color: var(--gray-700);
+    line-height: 1.65;
+  }
+
+  .sdk-highlight {
+    background: linear-gradient(135deg, var(--maf-navy), #1e3a8a);
+    border-radius: 10px;
+    padding: 16px 18px;
+    color: #fff;
+  }
+  .sdk-highlight-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .sdk-stat-row {
+    display: flex;
+    gap: 16px;
+  }
+  .sdk-stat {
+    text-align: center;
+    flex: 1;
+  }
+  .sdk-stat-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: #93B4FF;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .sdk-stat-lbl {
+    font-size: 9px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+  .sdk-stat-div {
+    width: 1px;
+    background: rgba(255,255,255,0.15);
+    align-self: stretch;
+  }
+
+  /* ── PLACEMENT SECTION ── */
+  .placement-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    flex: 1;
+  }
+  .placement-col {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .placement-header {
+    background: linear-gradient(135deg, var(--maf-grad-start), var(--maf-grad-end));
+    border-radius: 8px;
+    padding: 10px 14px;
+    color: #fff;
+  }
+  .placement-header-name {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 2px;
+  }
+  .placement-header-type {
+    font-size: 9.5px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.04em;
+  }
+  .placement-img {
+    flex: 1;
+    min-height: 100px;
+  }
+  .placement-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  .ptag {
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+  }
+  .ptag.blue { background: var(--maf-light); color: var(--maf-blue); border: 1px solid #BFDBFE; }
+  .ptag.purple { background: #F5F3FF; color: var(--maf-purple); border: 1px solid #DDD6FE; }
+  .ptag.green { background: #ECFDF5; color: #065F46; border: 1px solid #A7F3D0; }
+
+  .placement-reason {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 7px;
+    padding: 8px 11px;
+    font-size: 10.5px;
+    color: #78350F;
+    line-height: 1.6;
+  }
+  .placement-reason strong {
+    font-weight: 600;
+    color: #92400E;
+  }
+
+  /* ── CLOSING CTA ── */
+  .cta-page {
+    background: linear-gradient(160deg, #0D1535 0%, #1a2d6e 60%, #2451a3 100%);
+    min-height: 210mm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--gutter);
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .cta-page::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px; height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(91,33,232,0.2) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .cta-eyebrow {
+    font-size: 10px;
+    color: #93B4FF;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+  .cta-title {
+    font-size: 30px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.3;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+  }
+  .cta-title .highlight {
+    background: linear-gradient(90deg, #93B4FF, #C4AAFF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cta-steps {
+    display: flex;
+    gap: 0;
+    margin: 20px 0 30px;
+    background: rgba(255,255,255,0.07);
+    border-radius: 12px;
+    padding: 16px 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+  .cta-step {
+    flex: 1;
+    text-align: center;
+    padding: 0 16px;
+    position: relative;
+  }
+  .cta-step:not(:last-child)::after {
+    content: '→';
+    position: absolute;
+    right: -8px; top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,0.25);
+    font-size: 14px;
+  }
+  .cta-step-num {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #93B4FF;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .cta-step-lbl {
+    font-size: 10px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.06em;
+    line-height: 1.5;
+  }
+  .cta-contacts {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  .cta-contact {
+    text-align: left;
+  }
+  .cta-contact-role {
+    font-size: 10px;
+    color: rgba(255,255,255,0.4);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 3px;
+  }
+  .cta-contact-email {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: #93B4FF;
+    font-weight: 500;
+  }
+  .cta-logo {
+    position: absolute;
+    bottom: var(--gutter);
+    right: var(--gutter);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.25);
+    letter-spacing: 0.06em;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: none; }
+    .page { margin: 0; page-break-after: always; box-shadow: none; }
+    @page { size: A4 landscape; margin: 0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ PAGE 1: COVER ══ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-header">
+      <img src="images/maf-logo.jpg" alt="MAF" class="maf-logo-img">
+      <span class="cover-dot"></span>
+      <span class="cover-tag">Loyalty Monetization Platform</span>
+    </div>
+
+    <div class="cover-body">
+      <div class="cover-eyebrow">Partnership Proposal</div>
+      <div class="cover-title">
+        <span class="accent">[파트너사명]</span>에<br>한 지면만 더하면<br>어떻게 될까요?
+      </div>
+      <div class="cover-subtitle">우수 사례 · 기능 개선 · 최적 지면 제안</div>
+
+      <div class="cover-kpis">
+        <div class="cover-kpi">
+          <div class="cover-kpi-num">474<span class="unit">%</span></div>
+          <div class="cover-kpi-label">카카오페이<br>MyChips 수익 성장</div>
+        </div>
+        <div class="cover-kpi">
+          <div class="cover-kpi-num">3<span class="unit">줄</span></div>
+          <div class="cover-kpi-label">SDK 연동<br>최소 코드</div>
+        </div>
+        <div class="cover-kpi">
+          <div class="cover-kpi-num">85<span class="unit">%+</span></div>
+          <div class="cover-kpi-label">기존 오퍼월<br>수익 성장</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cover-footer">
+      <div class="cover-toc">
+        <div class="cover-toc-item">01 우수 사례</div>
+        <div class="cover-toc-item">02 기능 개선</div>
+        <div class="cover-toc-item">03 지면 제안</div>
+      </div>
+      <div class="cover-date">2026</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PAGE 2: 우수 사례 — 정보 ══ -->
+<div class="page section-page">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-divider"></span>
+    <span class="section-title">우수 사례 — 카카오페이</span>
+    <span class="section-desc">노출 지면 확장 테스트</span>
+  </div>
+  <div class="section-body" style="gap:12px;">
+
+    <!-- KPI Row -->
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px;flex-shrink:0;">
+      <div class="kpi-box dark" style="padding:18px 10px 16px;">
+        <div class="kpi-num" style="font-size:26px;">474<span class="kpi-unit" style="font-size:15px;">%</span></div>
+        <div class="kpi-lbl" style="font-size:10px;margin-top:6px;">전체 수익 성장<br>(10월→12월)</div>
+      </div>
+      <div class="kpi-box" style="padding:18px 10px 16px;">
+        <div class="kpi-num" style="color:#7C3AED;font-size:26px;">84.8<span class="kpi-unit" style="font-size:14px;">%</span></div>
+        <div class="kpi-lbl" style="font-size:10px;margin-top:6px;">기존 오퍼월 매출도 성장<br>(신규 지면 제외 수치)</div>
+      </div>
+      <div class="kpi-box" style="padding:18px 10px 16px;">
+        <div class="kpi-num" style="font-size:26px;">37.7<span class="kpi-unit" style="font-size:14px;">%</span></div>
+        <div class="kpi-lbl" style="font-size:10px;margin-top:6px;">오퍼월 eCPM 성장<br>(광고 단가 상승)</div>
+      </div>
+      <div class="kpi-box" style="padding:18px 10px 16px;">
+        <div class="kpi-num" style="color:#059669;font-size:26px;">67.8<span class="kpi-unit" style="font-size:14px;">%</span></div>
+        <div class="kpi-lbl" style="font-size:10px;margin-top:6px;">API 신규 매출 비중<br>(12월 전체 수익 기준)</div>
+      </div>
+    </div>
+
+    <!-- 본문: 2컬럼 -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;flex:1;min-height:0;">
+
+      <!-- Left: 배경(크게) + 타임라인(작게) + 인용 -->
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0;">
+
+        <div class="card" style="padding:20px 22px;flex:1.4;display:flex;flex-direction:column;justify-content:center;">
+          <div class="card-label" style="font-size:10px;">배경</div>
+          <div class="card-title" style="font-size:16px;margin:8px 0 10px;line-height:1.4;">노출 지면이 늘어난다고, 전체 수익도 늘어날까요?</div>
+          <div class="card-body" style="font-size:13px;line-height:1.75;">
+             카카오페이는 기존 오퍼월로 안정적 수익을 내고 있는 매체였습니다.<br> 새 지면을 추가하면 기존 오퍼월 수익은 줄어들 것이라는 우려도 있었지만<br> 기존 오퍼월을 유지한 채로,
+            <strong>혜택메인 · 만보기 · 출석체크</strong> 3개 지면에 <br>API 방식으로 추가 지면을 테스트했습니다. <br> 그 결과, <strong>기존의 오퍼월 수익도 성장</strong>했으며, <strong>새로운 수익원이 추가</strong>되었습니다.
+          </div>
+        </div>
+
+        <div class="timeline-card" style="flex:1;padding:14px 18px;min-height:0;display:flex;flex-direction:column;justify-content:center;">
+          <div class="timeline-label" style="font-size:10px;">도입 흐름</div>
+          <div class="timeline" style="gap:9px;margin-top:8px;">
+            <div class="timeline-row">
+              <span class="timeline-phase" style="font-size:11px;padding:3px 9px;">10월</span>
+              <span class="timeline-text" style="font-size:13.5px;">기존 오퍼월 운영 중 · 추가 지면 도입 논의 시작</span>
+            </div>
+            <div class="timeline-row">
+              <span class="timeline-phase" style="font-size:11px;padding:3px 9px;">11월</span>
+              <span class="timeline-text" style="font-size:13.5px;"><strong>API 연동으로 3개 지면 확대</strong> — 혜택메인, 만보기, 출석체크</span>
+            </div>
+            <div class="timeline-row">
+              <span class="timeline-phase" style="font-size:11px;padding:3px 9px;">12월</span>
+              <span class="timeline-text" style="font-size:13.5px;">추가 지면의 수익이 전체 수익의 <strong>67.8%</strong>로 성장 · 오퍼월 수익도 동반 상승</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quote-card" style="padding:12px 16px;flex-shrink:0;">
+          <div class="quote-mark" style="font-size:24px;top:8px;">"</div>
+          <div class="quote-text" style="font-size:11px;padding-left:18px;line-height:1.6;">
+            기존 오퍼월 수익은 그대로 유지·성장하면서, API로 완전히 새로운 매출 레이어가 추가됐습니다.<br>
+            두 채널이 경쟁하는 것이 아니라 서로 상승 작용을 일으킨 것이 핵심이었습니다.
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right: 성공 포인트 4개 -->
+      <div style="display:flex;flex-direction:column;gap:10px;min-height:0;">
+        <div style="font-size:10px;font-weight:600;color:var(--maf-blue);letter-spacing:0.14em;text-transform:uppercase;flex-shrink:0;">성공 요인</div>
+
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:var(--maf-light);border-radius:8px;border:1px solid #C7D7FD;flex:1;min-height:0;">
+          <div style="font-size:24px;flex-shrink:0;line-height:1;">🔗</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:var(--maf-blue);margin-bottom:5px;">Reward가 큰 오퍼들을 직접 노출</div>
+            <div style="font-size:12.5px;color:var(--gray-700);line-height:1.6;">리워드가 큰 오퍼들을 별도 지면에 드러내는 전략으로 수익을 확장<br> 오퍼월 매출도 오히려 +84.8% 동반 성장</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:#F5F3FF;border-radius:8px;border:1px solid #DDD6FE;flex:1;min-height:0;">
+          <div style="font-size:24px;flex-shrink:0;line-height:1;">📍</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:var(--maf-purple);margin-bottom:5px;">유저 Needs에 맞는 지면 선택</div>
+            <div style="font-size:12.5px;color:var(--gray-700);line-height:1.6;">유저의 니즈가 분명한 출석체크·만보기 지면에서 기존 배너 형태로 노출<br> 클릭률과 전환율 동시 확보</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:#ECFDF5;border-radius:8px;border:1px solid #A7F3D0;flex:1;min-height:0;">
+          <div style="font-size:24px;flex-shrink:0;line-height:1;">🎮</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:#065F46;margin-bottom:5px;">다중 리워드 캠페인으로 Retention 강화</div>
+            <div style="font-size:12.5px;color:var(--gray-700);line-height:1.6;">단계별 리워드가 쌓이는 멀티 미션과 Play2Earn을 집중 배치 <br> 유저가 리워드를 받기 위하여, 자발적으로 재방문</div>
+          </div>
+        </div>
+
+        <div style="display:flex;align-items:center;gap:14px;padding:16px 18px;background:#FFFBEB;border-radius:8px;border:1px solid #FDE68A;flex:1;min-height:0;">
+          <div style="font-size:24px;flex-shrink:0;line-height:1;">📈</div>
+          <div>
+            <div style="font-size:14px;font-weight:600;color:#92400E;margin-bottom:5px;">2개월 만에 매출 구조 전환</div>
+            <div style="font-size:12.5px;color:var(--gray-700);line-height:1.6;">11월 도입 → 12월에 신규 API 매출이 전체의 67.8% 차지 <br> 도입 한 달 만에 빠르게 자리 잡으며 연내 성과를 확보</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PAGE 2-B: 우수 사례 — 앱 화면 ══ -->
+<div class="page section-page" style="overflow:hidden;">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <span class="section-divider"></span>
+    <span class="section-title">우수 사례 — 카카오페이 앱 화면</span>
+    <span class="section-desc">도입 전후 화면</span>
+  </div>
+
+  <div class="section-body" style="gap:10px;">
+
+    <!-- 레이블 행 -->
+    <div style="display:flex;gap:6px;flex-shrink:0;align-items:flex-end;padding-bottom:2px;">
+      <div style="flex:1;">
+        <div class="ba-tag before" style="display:inline-flex;margin-bottom:3px;font-size:8.5px;padding:2px 7px;">● BEFORE</div>
+        <div style="font-size:9.5px;color:var(--gray-500);">혜택 탭 · 오퍼월 운영</div>
+      </div>
+      <div style="width:1px;background:var(--gray-200);height:32px;"></div>
+      <div style="flex:1;">
+        <div class="ba-tag after" style="display:inline-flex;margin-bottom:3px;font-size:8.5px;padding:2px 7px;">● AFTER — 지면 추가</div>
+        <div style="font-size:9.5px;color:var(--gray-500);">혜택 탭 (상단)</div>
+      </div>
+      <div style="flex:1;padding-top:20px;">
+        <div style="font-size:9.5px;color:var(--gray-500);">혜택 탭 (스크롤)</div>
+      </div>
+      <div style="width:1px;background:var(--gray-200);height:32px;"></div>
+      <div style="flex:1;padding-top:20px;">
+        <div style="font-size:9.5px;color:var(--gray-700);font-weight:600;">혜택 탭 - 출석체크</div>
+      </div>
+      <div style="width:1px;background:var(--gray-200);height:32px;"></div>
+      <div style="flex:1;padding-top:20px;">
+        <div style="font-size:9.5px;color:var(--gray-700);font-weight:600;">혜택 탭 - 만보기</div>
+      </div>
+    </div>
+
+    <!-- 이미지 행 — A4 맞춤 고정 높이 -->
+    <div style="display:flex;gap:6px;height:122mm;flex-shrink:0;">
+
+      <div style="flex:1;border-radius:10px;overflow:hidden;border:2px solid #FCA5A5;">
+        <img src="images/example-poor-format.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+
+      <div style="width:1px;background:var(--gray-200);border-radius:2px;flex-shrink:0;"></div>
+
+      <div style="flex:1;border-radius:10px;overflow:hidden;border:2px solid #6EE7B7;">
+        <img src="images/example-good-format.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+
+      <div style="flex:1;border-radius:10px;overflow:hidden;border:2px solid #6EE7B7;">
+        <img src="images/example-good-format.jpg" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+      </div>
+
+      <div style="width:1px;background:var(--gray-200);border-radius:2px;flex-shrink:0;"></div>
+
+      <div style="flex:1;border-radius:10px;overflow:hidden;border:2px solid #6EE7B7;">
+        <img src="images/example-good-format.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+
+      <div style="width:1px;background:var(--gray-200);border-radius:2px;flex-shrink:0;"></div>
+
+      <div style="flex:1;border-radius:10px;overflow:hidden;border:2px solid #6EE7B7;">
+        <img src="images/example-good-format.jpg" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;">
+      </div>
+
+    </div>
+
+    <!-- 캡션 행 -->
+    <div style="display:flex;gap:6px;flex-shrink:0;">
+      <div style="flex:1;font-size:9px;color:var(--gray-500);text-align:center;"></div>
+      <div style="width:1px;flex-shrink:0;"></div>
+      <div style="width:1px;flex-shrink:0;"></div>
+      <div style="width:1px;flex-shrink:0;"></div>
+    </div>
+
+    <!-- 하단 배너 -->
+    <div style="background:linear-gradient(135deg,var(--maf-navy),#1e3a8a);border-radius:10px;padding:14px 20px;display:flex;align-items:center;gap:24px;flex-shrink:0;">
+      <div style="flex:1;font-size:11.5px;color:rgba(255,255,255,0.8);line-height:1.7;">
+        기존 리스트 사이에 MyChips캠페인 배너를 자연스럽게 삽입했습니다.<br>
+        <strong style="color:#fff;">유저가 포인트를 기대하며 진입하는 지면</strong>에 배너를 배치하여 클릭·전환율을 극대화했습니다.
+      </div>
+      <div style="display:flex;gap:20px;flex-shrink:0;">
+        <div style="text-align:center;">
+          <div style="font-family:Inter,sans-serif;font-size:22px;font-weight:700;color:#93B4FF;line-height:1;">474%</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.4);margin-top:4px;">전체 매출 성장</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:Inter,sans-serif;font-size:22px;font-weight:700;color:#93B4FF;line-height:1;">67.8%</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.4);margin-top:4px;">신규 API 매출 비중</div>
+        </div>
+        <div style="width:1px;background:rgba(255,255,255,0.15);"></div>
+        <div style="text-align:center;">
+          <div style="font-family:Inter,sans-serif;font-size:22px;font-weight:700;color:#93B4FF;line-height:1;">2개월</div>
+          <div style="font-size:9.5px;color:rgba(255,255,255,0.4);margin-top:4px;">도입→성과 기간</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- ══ PAGE 3: 기능 개발 ══ -->
+<div class="page section-page">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <span class="section-divider"></span>
+    <span class="section-title">SDK 기능 개선 — MyChips Native SDK</span>
+    <span class="section-desc">추가 연동하지 않도록, 기능 개발 완료</span>
+  </div>
+
+  <div class="section-body">
+    <div class="sdk-layout" style="flex:1;min-height:0;">
+      <!-- Left Column -->
+      <div class="sdk-col">
+
+        <!-- Quick Start -->
+        <div class="card" style="padding:12px 16px;flex:0.8;display:flex;flex-direction:column;justify-content:center;">
+          <div class="card-label">Quick Start — 이 3줄이 전부입니다</div>
+          <div class="code-snippet" style="margin-top:10px">
+
+<span class="comment">// 1. 초기화</span><br>
+<span class="kw">MCOfferwallSDK</span>.<span class="fn">Init</span>(this, <span class="str">"YOUR_API_KEY"</span>)
+<span class="kw">MCOfferwallSDK</span>.<span class="fn">SetAdunitId</span>(<span class="str">"YOUR_AD_UNIT_ID"</span>)<br>
+<span class="comment">// 2. XML에 뷰 추가</span><br>
+&lt;<span class="kw">MCNativeAdView</span> android:layout_height=<span class="str">"180dp"</span> /&gt;<br>
+
+<span class="comment">// 3. 로드 — 끝!</span><br>
+adView.<span class="fn">load</span>()
+          </div>
+          <div style="margin-top:10px; font-size:11px; color:var(--gray-700);">
+            SDK가 자동으로 처리합니다: 캠페인 fetch · 스켈레톤 로딩 · 노출 트래킹 · 클릭 핸들링
+          </div>
+        </div>
+
+        <!-- Feature Grid -->
+        <div class="feature-grid" style="flex:1.4;align-content:stretch;">
+          <div class="feature-item">
+            <div class="feature-item-title"><span class="fi-icon">↔️</span> 스크롤 방향</div>
+            <div class="feature-item-desc">가로(기본) / 세로 전환을 한 줄로 설정<br> 지면에 맞게 레이아웃 변경 가능</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-title"><span class="fi-icon">🎨</span> 완전 커스텀 레이아웃</div>
+            <div class="feature-item-desc">XML 레이아웃을 자유롭게 설계<br> 원형·카드형·대형 커버 등 3가지 예시 제공</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-title"><span class="fi-icon">🪙</span> 자체 재화 아이콘 적용</div>
+            <div class="feature-item-desc">앱 내 재화 아이콘을 URL 또는 로컬 drawable로 교체<br> 브랜드 일관성 유지</div>
+          </div>
+          <div class="feature-item">
+            <div class="feature-item-title"><span class="fi-icon">📲</span> 인앱 페이지 오픈</div>
+            <div class="feature-item-desc">캠페인 상세 페이지를 외부 브라우저 대신 인앱 WebView로 열어 이탈 최소화</div>
+          </div>
+        </div>
+
+        <!-- SDK Highlight -->
+        <div class="sdk-highlight" style="flex-shrink:0;padding:18px 20px;">
+          <div class="sdk-highlight-title">✓ SDK가 자동으로 처리하는 것들</div>
+          <div class="sdk-stat-row">
+            <div class="sdk-stat">
+              <div class="sdk-stat-num">노출 트래킹</div>
+              <div class="sdk-stat-lbl">노출 트래킹 및 측정<br>impression pixel</div>
+            </div>
+            <div class="sdk-stat-div"></div>
+            <div class="sdk-stat">
+              <div class="sdk-stat-num">클릭 이벤트</div>
+              <div class="sdk-stat-lbl">클릭 이벤트 감지 및 처리<br>(SDK 내 코드 내장)</div>
+            </div>
+            <div class="sdk-stat-div"></div>
+            <div class="sdk-stat">
+              <div class="sdk-stat-num">이미지 로더</div>
+              <div class="sdk-stat-lbl">캠페인 이미지 등 Built-in<br>(외부 라이브러리 불필요)</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column -->
+      <div class="sdk-col">
+
+        <!-- Steps -->
+        <div class="card" style="padding:14px 18px;flex:0.9;display:flex;flex-direction:column;justify-content:center;">
+          <div class="card-label">커스터마이징 단계</div>
+          <div style="display:flex; flex-direction:column; gap:8px; margin-top:8px;">
+            <div class="step-card" style="padding:10px 14px;">
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <div class="step-title">기본 레이아웃 드롭인</div>
+                <div class="step-desc">XML 한 줄 + <code style="background:#F0F4FF;padding:1px 4px;border-radius:3px;font-size:10px;">adView.load()</code> 호출만으로 스크롤 가능한 캠페인 리스트가 즉시 표시됩니다.</div>
+              </div>
+            </div>
+            <div class="step-card" style="padding:10px 14px;">
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <div class="step-title">브랜드 커스터마이징</div>
+                <div class="step-desc">재화 아이콘, 텍스트 색상, 로딩 뷰를 앱 디자인에 맞게 덮어씌웁니다. 코드 추가 없이 renderer 설정만으로 완성.</div>
+              </div>
+            </div>
+            <div class="step-card" style="padding:10px 14px;">
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <div class="step-title">완전 커스텀 레이아웃 (선택)</div>
+                <div class="step-desc">MCNativeAdRenderer 인터페이스로 자유로운 카드 UI 구현. SDK는 데이터·트래킹만 담당, UI 전권은 파트너사에.</div>
+              </div>
+            </div>
+            <div class="step-card" style="padding:10px 14px;">
+              <div class="step-num">4</div>
+              <div class="step-content">
+                <div class="step-title">데이터 활용</div>
+                <div class="step-desc">MCCampaign 객체로 캠페인명·리워드·프로모·진행상태 등 실시간 데이터 접근. 진행 중 배지·프로모 배지 자동 표시.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="padding:16px 18px;flex:0.8;display:flex;flex-direction:column;justify-content:center;">
+          <div class="card-label">지원 캠페인 유형</div>
+          <div style="display:flex; gap:10px; margin-top:11px; flex-wrap:wrap;">
+            <div style="background:#EEF2FF;border:1px solid #C7D7FD;border-radius:7px;padding:13px 14px;flex:1;min-width:80px;">
+              <div style="font-size:12px;font-weight:600;color:var(--maf-blue);margin-bottom:4px;">Single Reward</div>
+              <div style="font-size:10.5px;color:var(--gray-700);line-height:1.55;">설치 1회 완료 시 즉시 지급</div>
+            </div>
+            <div style="background:#F5F3FF;border:1px solid #DDD6FE;border-radius:7px;padding:13px 14px;flex:1;min-width:80px;">
+              <div style="font-size:12px;font-weight:600;color:var(--maf-purple);margin-bottom:4px;">Multi Reward</div>
+              <div style="font-size:10.5px;color:var(--gray-700);line-height:1.55;">단계별 미션 달성마다 리워드 지급</div>
+            </div>
+            <div style="background:#ECFDF5;border:1px solid #A7F3D0;border-radius:7px;padding:13px 14px;flex:1;min-width:80px;">
+              <div style="font-size:12px;font-weight:600;color:#065F46;margin-bottom:4px;">Play2Earn</div>
+              <div style="font-size:10.5px;color:var(--gray-700);line-height:1.55;">플레이 시간 기반 보상 · iOS 지원</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PAGE 4: 도입 제안 ══ -->
+<div class="page section-page">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <span class="section-divider"></span>
+    <span class="section-title">앱 내 도입 제안 — 추천 지면</span>
+    <span class="section-desc">선생님 앱에서는 여기가 좋겠어요</span>
+  </div>
+
+  <div class="section-body">
+    <div class="placement-layout" style="flex:1">
+
+      <!-- Placement 1 -->
+      <div class="placement-col">
+        <div class="placement-header">
+          <div class="placement-header-name">지면 A — [홈/메인]</div>
+          <div class="placement-header-type">상단 노출 · 가로 스크롤</div>
+        </div>
+        <div style="display:flex;gap:5px;flex-shrink:0;">
+          <span class="ptag blue">Single Reward</span>
+          <span class="ptag purple">Multi Reward</span>
+        </div>
+        <div class="img-placeholder placement-img" style="flex:1;min-height:120px;">
+          <div class="icon">📱</div>
+          <div>[홈 화면] 추천 영역<br>스크린샷 삽입</div>
+        </div>
+        <div class="placement-reason">
+          <strong>추천 이유:</strong> 가장 많은 유저가 거치는 진입점. 가로 스크롤 카드로 자연스러운 게임 발견 경험을 제공하며 이탈 없이 참여 유도 가능.
+        </div>
+      </div>
+
+      <!-- Placement 2 -->
+      <div class="placement-col">
+        <div class="placement-header" style="background:linear-gradient(135deg,#5B21E8,#7C3AED);">
+          <div class="placement-header-name">지면 B — [혜택/리워드]</div>
+          <div class="placement-header-type">전용 탭 · 세로 리스트</div>
+        </div>
+        <div style="display:flex;gap:5px;flex-shrink:0;">
+          <span class="ptag purple">Play2Earn</span>
+          <span class="ptag green">Multi Reward</span>
+        </div>
+        <div class="img-placeholder placement-img" style="flex:1;min-height:120px;">
+          <div class="icon">📱</div>
+          <div>[혜택 탭] 추천 영역<br>스크린샷 삽입</div>
+        </div>
+        <div class="placement-reason">
+          <strong>추천 이유:</strong> 리워드를 기대하고 방문하는 고의향 유저 집중. Play2Earn 캠페인으로 체류 시간을 늘리고 단가 높은 인앱 결제 유저 유입 효과 극대화.
+        </div>
+      </div>
+
+      <!-- Placement 3 -->
+      <div class="placement-col">
+        <div class="placement-header" style="background:linear-gradient(135deg,#0369A1,#0EA5E9);">
+          <div class="placement-header-name">지면 C — [마이/포인트]</div>
+          <div class="placement-header-type">마이페이지 내 삽입</div>
+        </div>
+        <div style="display:flex;gap:5px;flex-shrink:0;">
+          <span class="ptag blue">Single Reward</span>
+          <span class="ptag green">Play2Earn</span>
+        </div>
+        <div class="img-placeholder placement-img" style="flex:1;min-height:120px;">
+          <div class="icon">📱</div>
+          <div>[마이페이지] 추천 영역<br>스크린샷 삽입</div>
+        </div>
+        <div class="placement-reason">
+          <strong>추천 이유:</strong> 포인트·잔액 확인 후 자연스럽게 적립 미션으로 연결. 앱 재방문 동기를 만들어 리텐션 향상에도 기여.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom note -->
+    <div style="background:var(--maf-light);border-radius:8px;padding:10px 16px;border:1px solid #C7D7FD;display:flex;align-items:center;gap:10px;">
+      <span style="font-size:16px;">💡</span>
+      <span style="font-size:11px;color:var(--gray-700);line-height:1.6;">
+        위 이미지 영역에는 실제 앱 스크린샷에 <strong>MAF 네이티브 광고 위치를 표시한 합성 이미지</strong>가 들어갑니다. 
+        지면별 추천 포맷(가로 스크롤 / 세로 리스트 / 카드형)은 MAF 팀과 함께 최적화할 수 있습니다.
+      </span>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══ PAGE 5: CLOSING ══ -->
+<div class="page">
+  <div class="cta-page">
+  <div style="position:absolute;top:var(--gutter);left:var(--gutter);display:flex;align-items:center;gap:10px;z-index:1;">
+      <img src="images/maf-logo.jpg" class="maf-logo-img" alt="MAF">
+    </div>
+    <div class="cta-eyebrow">Next Steps</div>
+    <div class="cta-title">
+      지금 바로 시작할 수 있습니다<br>
+      <span class="highlight" style="font-size:0.72em;font-weight:500;letter-spacing:0;">SDK는 이미 연동되어 있으니까요</span>
+    </div>
+
+    <div class="cta-steps" style="flex-direction:column;gap:0;padding:20px 28px;align-items:flex-start;max-width:580px;width:100%;">
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:12px 0;border-bottom:1px solid rgba(255,255,255,0.08);width:100%;">
+        <div style="font-family:Inter,sans-serif;font-size:18px;font-weight:700;color:#93B4FF;min-width:28px;line-height:1;">A</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;">직접 시작하기 — SDK 업데이트만 하면 됩니다</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.7;">이미 SDK가 연동된 상태입니다. Native SDK 버전을 최신으로 올리고, <code style="background:rgba(255,255,255,0.1);padding:1px 6px;border-radius:3px;font-size:10px;">MCNativeAdView</code>를 원하는 지면에 드롭인하면 바로 캠페인이 노출됩니다.</div>
+        </div>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:16px;padding:12px 0;width:100%;">
+        <div style="font-family:Inter,sans-serif;font-size:18px;font-weight:700;color:#C4AAFF;min-width:28px;line-height:1;">B</div>
+        <div>
+          <div style="font-size:13px;font-weight:600;color:#fff;margin-bottom:3px;">MAF 팀과 함께 시작하기 — 애매하면 도와드립니다</div>
+          <div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.7;">어느 지면에 넣을지, 어떤 포맷이 맞을지 고민되신다면 MAF 팀이 함께 검토해 드립니다. 연락 한 번으로 시작할 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-contacts">
+      <div class="cta-contact">
+        <div class="cta-contact-role">MAF Sales</div>
+        <div class="cta-contact-email">sales.kr@maf.ad</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;"></div>
+      <div class="cta-contact">
+        <div class="cta-contact-role">MAF Biz Dev</div>
+        <div class="cta-contact-email">bizdev.kr@maf.ad</div>
+      </div>
+      <div style="width:1px;background:rgba(255,255,255,0.1);align-self:stretch;"></div>
+      <div class="cta-contact">
+        <div class="cta-contact-role">문서</div>
+        <div class="cta-contact-email">docs.maf.ad</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
